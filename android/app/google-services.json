@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478159988452",
+    "project_id": "oppohepl",
+    "storage_bucket": "oppohepl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478159988452:android:3a940d497753571236eef1",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.oppohelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478159988452-inf838d8imfq781spdbvn2vun397c050.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwZGof2ej8kGlTHz_yD_4fyHD4DuT6W_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478159988452-inf838d8imfq781spdbvn2vun397c050.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
