@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors, prefer_if_null_operators, unnecessary_null_comparison, prefer_void_to_null, await_only_futures
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:oppohelp/my_style.dart';
-
 
 class MyService extends StatefulWidget {
   @override
@@ -8,74 +11,72 @@ class MyService extends StatefulWidget {
 }
 
 class _MyServiceState extends State<MyService> {
-//   String? email;
+  String? email;
 //   Widget currentWidget = ShowPdfList();
 
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     findAnEmail();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    findAnEmail();
+  }
 
-//   Future<Null> findAnEmail() async {
-//     await Firebase.initializeApp().then((value) async {
-//       await FirebaseAuth.instance.authStateChanges().listen((event) {
-//         setState(() {
-//           email = event!.email;
-//         });
-//       });
-//     });
-//   }
+  Future<Null> findAnEmail() async {
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseAuth.instance.authStateChanges().listen((event) {
+        setState(() {
+          email = event!.email;
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: MyStyle().prinarColor),
-      // drawer: builDrawer(context),
+      drawer: builDrawer(context),
       // body: currentWidget,
     );
   }
 
-  // Drawer builDrawer(BuildContext context) {
-  //   return Drawer(
-  //     child: Stack(
-  //       children: [
-  //         SafeArea(
-  //           child: Column(
-  //             children: [
-  //               builUserAccountsDrawerHeader(),
-  //               builShowList(),
-  //               builPrinter(),
-  //               builPdf(),
-  //             ],
-  //           ),
-  //         ),
-  //         builSignOut(),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Drawer builDrawer(BuildContext context) {
+    return Drawer(
+      child: Stack(
+        children: [
+          SafeArea(
+            child: Column(
+              children: [
+                builUserAccountsDrawerHeader(),
+                // builShowList(),
+                // builPrinter(),
+                // builPdf(),
+              ],
+            ),
+          ),
+          builSignOut(),
+        ],
+      ),
+    );
+  }
 
   // ********************************* Mathod ********************************** */
 
-
-  // UserAccountsDrawerHeader builUserAccountsDrawerHeader() {
-  //   return UserAccountsDrawerHeader(
-  //               //Header ในส่วนของ Drawer
-  //               decoration: BoxDecoration(
-  //                 //ปรับแต่งในส่วนของ Header Drawer
-  //                 image: DecorationImage(
-  //                   image: AssetImage('assets/images/profileBK.jpg'),
-  //                   fit: BoxFit.cover, //ปรับภาพให้เต็มกรอบพอดี
-  //                 ),
-  //               ),
-  //               accountName: Text('OPPO HELP'),
-  //               accountEmail: MyStyle().titleEmail(email! == null ? 'E-mail' : email!),
-  //               currentAccountPicture:
-  //                   Image.asset('assets/icons/detective.png'),
-  //             );
-  // }
+  UserAccountsDrawerHeader builUserAccountsDrawerHeader() {
+    return UserAccountsDrawerHeader(
+                //Header ในส่วนของ Drawer
+                decoration: BoxDecoration(
+                  //ปรับแต่งในส่วนของ Header Drawer
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/profileBK.jpg'),
+                    fit: BoxFit.cover, //ปรับภาพให้เต็มกรอบพอดี
+                  ),
+                ),
+                accountName: Text('OPPO HELP'),
+                accountEmail: MyStyle().titleEmail(email! == null ? 'E-mail' : email!),
+                currentAccountPicture:
+                    Image.asset('assets/icons/detective.png'),
+              );
+  }
 
   // ListTile builShowList() {
   //   return ListTile(
@@ -119,28 +120,29 @@ class _MyServiceState extends State<MyService> {
   //   );
   // }
 
-  // Column builSignOut() {
-  //   return Column(
-  //     mainAxisAlignment: MainAxisAlignment.end,
-  //     children: [
-  //       ListTile(
-  //         onTap: () async {
-  //           await Firebase.initializeApp().then((value) async {
-  //             await FirebaseAuth.instance.signOut().then((value) =>
-  //                 Navigator.pushNamedAndRemoveUntil(
-  //                     context, '/authen', (route) => false));
-  //           });
-  //         },
-  //         tileColor: MyStyle().darkColor,
-  //         leading: Icon(
-  //           Icons.exit_to_app,
-  //           color: Colors.white,
-  //           size: 40,
-  //         ),
-  //         title: MyStyle().titleH2White('Sign Out'),
-  //         subtitle: MyStyle().titleH3White('Sign Out & Go to Login page'),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Column builSignOut() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ListTile(
+          onTap: () async {
+            await Firebase.initializeApp().then((value) async {
+              await FirebaseAuth.instance.signOut().then((value) =>
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/authen', (route) => false));
+            });
+          },
+          tileColor: MyStyle().darkColor,
+          // ignore: prefer_const_constructors
+          leading: Icon(
+            Icons.exit_to_app,
+            color: Colors.white,
+            size: 35,
+          ),
+          title: MyStyle().titleH2White('Sign Out'),
+          // subtitle: MyStyle().titleH3White('Sign Out & Go to Login page'),
+        ),
+      ],
+    );
+  }
 }
