@@ -3,6 +3,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:oppohelp/list/asset_list.dart';
+import 'package:oppohelp/list/cctv_list.dart';
+import 'package:oppohelp/list/domain_list.dart';
 import 'package:oppohelp/my_style.dart';
 
 class MyService extends StatefulWidget {
@@ -12,7 +15,7 @@ class MyService extends StatefulWidget {
 
 class _MyServiceState extends State<MyService> {
   String? email;
-//   Widget currentWidget = ShowPdfList();
+  Widget currentWidget = AssetList();
 
   @override
   void initState() {
@@ -35,26 +38,35 @@ class _MyServiceState extends State<MyService> {
     return Scaffold(
       appBar: AppBar(backgroundColor: MyStyle().prinarColor),
       drawer: builDrawer(context),
-      // body: currentWidget,
+      body: currentWidget,
     );
   }
 
   Drawer builDrawer(BuildContext context) {
     return Drawer(
-      child: Stack(
-        children: [
-          SafeArea(
-            child: Column(
-              children: [
-                builUserAccountsDrawerHeader(),
-                // builShowList(),
-                // builPrinter(),
-                // builPdf(),
-              ],
-            ),
+      child: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+              
+                  builUserAccountsDrawerHeader(),
+                  builAsset(),
+                  builCctv(),
+                  builDomain(),
+                  builDoor(),
+                  builemail(),
+                  builHr(),
+                  builAsset(),
+                  SizedBox(height: 40),
+                  builSignOut(),
+                ],
+              ),
+              // builSignOut(),
+            ],
           ),
-          builSignOut(),
-        ],
+        ),
       ),
     );
   }
@@ -63,62 +75,103 @@ class _MyServiceState extends State<MyService> {
 
   UserAccountsDrawerHeader builUserAccountsDrawerHeader() {
     return UserAccountsDrawerHeader(
-                //Header ในส่วนของ Drawer
-                decoration: BoxDecoration(
-                  //ปรับแต่งในส่วนของ Header Drawer
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/profileBK.jpg'),
-                    fit: BoxFit.cover, //ปรับภาพให้เต็มกรอบพอดี
-                  ),
-                ),
-                accountName: Text('OPPO HELP'),
-                accountEmail: MyStyle().titleEmail(email! == null ? 'E-mail' : email!),
-                currentAccountPicture:
-                    Image.asset('assets/icons/detective.png'),
-              );
+      //Header ในส่วนของ Drawer
+      decoration: BoxDecoration(
+        //ปรับแต่งในส่วนของ Header Drawer
+        image: DecorationImage(
+          image: AssetImage('assets/images/profileBK.jpg'),
+          fit: BoxFit.cover, //ปรับภาพให้เต็มกรอบพอดี
+        ),
+      ),
+      accountName: Text('OPPO HELP'),
+      accountEmail: MyStyle().titleEmail(email! == null ? 'E-mail' : email!),
+      currentAccountPicture: Image.asset('assets/icons/detective.png'),
+    );
   }
 
-  // ListTile builShowList() {
-  //   return ListTile(
-  //     leading: Image.asset('assets/icons/cctv.png'),
-  //     title: Text('CCTV'),
-  //     subtitle: Text('การใช้งานกล้องเพื่อดู ย้อนหลัง'),
-  //     onTap: () {
-  //       setState(() {
-  //         currentWidget = ShowPdfList();
-  //       });
-  //       Navigator.pop(context);
-  //     },
-  //   );
-  // }
+  ListTile builAsset() {
+    return ListTile(
+      leading: Image.asset('assets/icons/pdf.png'),
+      title: Text('Asset'),
+      subtitle: Text('loading...'),
+      onTap: () {
+        setState(() {
+          currentWidget = AssetList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
 
-  // ListTile builPrinter() {
-  //   return ListTile(
-  //     leading: Image.asset('assets/icons/printer.png'),
-  //     title: Text('PRTINTER'),
-  //     subtitle: Text('ปัญหาการใช้งาน printer'),
-  //     onTap: () {
-  //       setState(() {
-  //         currentWidget = PrintList();
-  //       });
-  //       Navigator.pop(context);
-  //     },
-  //   );
-  // }
+  ListTile builCctv() {
+    return ListTile(
+      leading: Image.asset('assets/icons/cctv.png'),
+      title: Text('CCTV'),
+      subtitle: Text('loading'),
+      onTap: () {
+        setState(() {
+          currentWidget = CctvList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
 
-  // ListTile builPdf() {
-  //   return ListTile(
-  //     leading: Image.asset('assets/icons/pdf.png'),
-  //     title: Text('PDF'),
-  //     subtitle: Text('แสดงไฟล์ PDF ต่าง ๆ'),
-  //     onTap: () {
-  //       setState(() {
-  //         currentWidget = AnimeList();
-  //       });
-  //       Navigator.pop(context);
-  //     },
-  //   );
-  // }
+  ListTile builDomain() {
+    return ListTile(
+      leading: Image.asset('assets/icons/pdf.png'),
+      title: Text('Domain'),
+      subtitle: Text('loading'),
+      onTap: () {
+        setState(() {
+          currentWidget = DomainList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  ListTile builDoor() {
+    return ListTile(
+      leading: Image.asset('assets/icons/pdf.png'),
+      title: Text('Door'),
+      subtitle: Text('loading'),
+      onTap: () {
+        setState(() {
+          currentWidget = DomainList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  ListTile builemail() {
+    return ListTile(
+      leading: Image.asset('assets/icons/pdf.png'),
+      title: Text('Email'),
+      subtitle: Text('loading'),
+      onTap: () {
+        setState(() {
+          currentWidget = DomainList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  ListTile builHr() {
+    return ListTile(
+      leading: Image.asset('assets/icons/pdf.png'),
+      title: Text('HR page'),
+      subtitle: Text('loading'),
+      onTap: () {
+        setState(() {
+          currentWidget = DomainList();
+        });
+        Navigator.pop(context);
+      },
+    );
+  }
 
   Column builSignOut() {
     return Column(
@@ -140,7 +193,7 @@ class _MyServiceState extends State<MyService> {
             size: 35,
           ),
           title: MyStyle().titleH2White('Sign Out'),
-          // subtitle: MyStyle().titleH3White('Sign Out & Go to Login page'),
+          subtitle: MyStyle().titleH3White('v0.0.1'),
         ),
       ],
     );
