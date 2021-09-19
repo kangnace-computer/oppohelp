@@ -36,7 +36,7 @@ class MyStyle {
   Widget titleH3(String string) => Text(
         string,
         style: TextStyle(
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: FontWeight.bold,
           color: darkColor,
         ),
