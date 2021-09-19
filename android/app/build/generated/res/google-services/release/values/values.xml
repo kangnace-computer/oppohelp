@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">478159988452-inf838d8imfq781spdbvn2vun397c050.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">478159988452</string>
+    <string name="google_api_key" translatable="false">AIzaSyDwZGof2ej8kGlTHz_yD_4fyHD4DuT6W_A</string>
+    <string name="google_app_id" translatable="false">1:478159988452:android:3a940d497753571236eef1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDwZGof2ej8kGlTHz_yD_4fyHD4DuT6W_A</string>
+    <string name="google_storage_bucket" translatable="false">oppohepl.appspot.com</string>
+    <string name="project_id" translatable="false">oppohepl</string>
+</resources>

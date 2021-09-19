@@ -23,7 +23,7 @@ class _AuthenState extends State<Authen> {
     screen = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      floatingActionButton: buildRegister(),
+      // floatingActionButton: buildRegister(),
       body: Container(
         decoration: BoxDecoration(
           gradient: RadialGradient(
